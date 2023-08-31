@@ -1,13 +1,24 @@
-import { Input } from "@chakra-ui/react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
+import { FormControl, FormErrorMessage, Input } from "@chakra-ui/react";
+import { useFormContext } from "react-hook-form";
 
 interface IProps {
   id: string;
-  register: UseFormRegister<FieldValues>;
 }
 
-const DefaultInput = ({ id, register }: IProps) => {
-  return <Input mb="4" placeholder="Username" {...register(id)}></Input>;
+const DefaultInput = ({ id }: IProps) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext();
+
+  return (
+    <FormControl isInvalid={Boolean(errors[id])} mb="4">
+      <Input id={id} placeholder="Username" {...register(id)}></Input>
+      <FormErrorMessage>
+        {errors[id] && errors[id]?.message?.toString()}
+      </FormErrorMessage>
+    </FormControl>
+  );
 };
 
 export default DefaultInput;
