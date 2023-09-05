@@ -1,6 +1,6 @@
 "use client";
 import { Container, Heading, Text } from "@chakra-ui/react";
-import LoginForm from "@/src/components/LoginForm";
+import LoginForm from "@/src/components/forms/LoginForm";
 import CustomDivider from "@/src/components/shareable/CustomDivider";
 import SocialAccountList from "@/src/components/SocialAccountList";
 import Link from "next/link";

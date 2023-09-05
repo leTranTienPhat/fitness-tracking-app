@@ -1,6 +1,6 @@
 import { Button } from "@chakra-ui/react";
-import DefaultInput from "../shareable/DefaultInput";
-import PasswordInput from "../shareable/PasswordInput";
+import DefaultInput from "../../shareable/DefaultInput";
+import PasswordInput from "../../shareable/PasswordInput";
 import { loginSchema } from "@/src/validation/LoginFormValidation";
 import FormWrapper from "../FormWrapper";
 

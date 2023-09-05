@@ -1,5 +1,5 @@
 "use client";
-import SignupForm from "@/src/components/SignupForm";
+import SignUpForm from "@/src/components/forms/SignUpForm";
 import { Container, Heading } from "@chakra-ui/react";
 
 const Signup = () => {
@@ -11,7 +11,7 @@ const Signup = () => {
       >
         Sign Up
       </Heading>
-      <SignupForm />
+      <SignUpForm />
     </Container>
   );
 };
