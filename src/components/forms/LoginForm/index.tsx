@@ -3,10 +3,15 @@ import DefaultInput from "../../shareable/DefaultInput";
 import PasswordInput from "../../shareable/PasswordInput";
 import { loginSchema } from "@/src/validation/LoginFormValidation";
 import FormWrapper from "../FormWrapper";
+import { LoginCredentials, useLogin } from "@/src/api/auth";
 
 const LoginForm = () => {
-  const onSubmit = <T,>(data: T) => {
-    console.log(data);
+  const loginFn = useLogin();
+
+  const onSubmit = (data: LoginCredentials) => {
+    loginFn.mutate(data, {
+      onSuccess: () => console.log("Success login"),
+    });
   };
 
   return (

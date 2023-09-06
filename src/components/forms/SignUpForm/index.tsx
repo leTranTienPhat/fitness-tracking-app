@@ -3,22 +3,14 @@ import { loginSchema } from "@/src/validation/LoginFormValidation";
 import DefaultInput from "../../shareable/DefaultInput";
 import PasswordInput from "../../shareable/PasswordInput";
 import FormWrapper from "../FormWrapper";
-import { auth } from "@/src/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
-interface ISignUpData {
-  username: string;
-  password: string;
-}
+import { LoginCredentials, useRegister } from "@/src/api/auth";
 
 const SignUpForm = () => {
-  const onSubmit = (data: ISignUpData) => {
-    const { username, password } = data;
-    createUserWithEmailAndPassword(auth, username, password).then(
-      (userCredential) => {
-        console.log(userCredential);
-      }
-    );
+  const registerFn = useRegister();
+  const onSubmit = (data: LoginCredentials) => {
+    registerFn.mutate(data, {
+      onSuccess: () => console.log("Success register"),
+    });
   };
 
   return (

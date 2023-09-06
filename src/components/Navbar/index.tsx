@@ -21,10 +21,10 @@ const NavBar = ({ children }: IProps) => {
           <Link href="/setting">Setting</Link>
         </li>
         <li>
-          <Link href="/auth/login">Login</Link>
+          <Link href="/mypage">My Page</Link>
         </li>
         <li>
-          <button>Log out</button>
+          <Link href="/auth/login">Login</Link>
         </li>
       </ul>
       {children}
