@@ -1,7 +1,8 @@
+import { User } from "firebase/auth";
+
 export const localStorage = {
-  getToken: () =>
-    JSON.parse(window.localStorage.getItem("accessToken") || "null"),
-  setToken: (token: string) =>
-    window.localStorage.setItem("accessToken", JSON.stringify(token)),
-  clearToken: () => window.localStorage.removeItem("accessToken"),
+  getAuth: () => JSON.parse(window.localStorage.getItem("auth") || "null"),
+  setAuth: (authInfo: User) =>
+    window.localStorage.setItem("auth", JSON.stringify(authInfo)),
+  clearAuth: () => window.localStorage.removeItem("auth"),
 };

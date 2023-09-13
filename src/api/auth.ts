@@ -4,6 +4,7 @@ import { auth } from "@/src/firebase";
 import {
   UserCredential,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -21,10 +22,10 @@ export type LoginCredentials = {
 
 async function handleUserResponse(data: UserCredential) {
   const { user } = data;
-  localStorage.setToken(user.accessToken);
+  localStorage.setAuth(user);
 }
 
-async function userFn() {
+function userFn() {
   const user = auth.currentUser;
   console.log("User: ", user);
   return user ?? null;
@@ -34,7 +35,7 @@ function loginFn(data: LoginCredentials) {
   const { username, password } = data;
   signInWithEmailAndPassword(auth, username, password).then(
     (userCredential) => {
-      return userCredential;
+      handleUserResponse(userCredential);
     }
   );
 }
@@ -50,7 +51,7 @@ async function registerFn(data: LoginCredentials) {
 
 async function logoutFn() {
   signOut(auth).then(() => {
-    alert("Signed out successfull");
+    localStorage.clearAuth();
   });
 }
 

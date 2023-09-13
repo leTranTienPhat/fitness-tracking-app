@@ -1,6 +1,7 @@
 "use client";
 
 import { useLogout, useUser } from "@/src/api/auth";
+import withAuth from "@/src/hoc/withAuth";
 import { Box, Button } from "@chakra-ui/react";
 
 const MyPage = () => {
@@ -34,4 +35,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default withAuth(MyPage);
