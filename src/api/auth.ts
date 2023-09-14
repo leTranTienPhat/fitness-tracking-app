@@ -4,7 +4,6 @@ import { auth } from "@/src/firebase";
 import {
   UserCredential,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
