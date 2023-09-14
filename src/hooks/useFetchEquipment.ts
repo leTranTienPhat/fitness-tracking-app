@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../api/axios";
 
-const getListOfBodyParts = async () => {
+const getListOfEquipments = async () => {
   try {
-    const response = await axiosInstance.get("bodyPartList");
+    const response = await axiosInstance.get("equipmentList");
     return response;
   } catch (error) {
     console.log(error);
   }
 };
 
-export function useFetchBodyParts() {
+export function useFetchEquipments() {
   return useQuery({
-    queryKey: ["bodyParts"],
-    queryFn: () => getListOfBodyParts(),
+    queryKey: ["equipment"],
+    queryFn: () => getListOfEquipments(),
   });
 }
